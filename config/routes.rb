@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/userevents', to: 'users#user_events'
   get '/events', to: 'events#index'
   delete '/userevents/:id', to: 'events#destroy'
-
+  post '/tickets/new', to: 'tickets#create'
 end
