@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_133854) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "ticket_id"
+    t.integer "event_id"
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_133854) do
     t.string "description"
     t.string "date"
     t.string "location"
+    t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

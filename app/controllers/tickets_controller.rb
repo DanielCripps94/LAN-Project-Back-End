@@ -13,6 +13,8 @@ class TicketsController < ApplicationController
         render json: ticket
     end
 
+    
+
     private
 
     def ticket_params

@@ -6,17 +6,14 @@ class EventsController < ApplicationController
     end
 
     def create
-        user = get_current_user
-        event = Event.find_by(prarms[:book_id])
-        if event
-            if user.events.include?(event)
-                render json: {error: 'You are already attending this event'}, status: 401
-            else
-                render json(event_id: event.id, user_id: user.id)
-            end
-        else
-            event = Event.create(event_params)
-            render json(event_id: event.id, user_id: user.id)
+        user = User.find_by(username: params[:event][:user])
+            event = Event.new(event_params)
+            event[:user_id] = user.id
+            event.save
+            if event 
+            render json: event
+            else 
+            render json: {error: 'You are not authorized'}, status: 401
         end
     end
 
@@ -30,7 +27,7 @@ class EventsController < ApplicationController
 
     private 
 
-    def book_params
-        params.require(:book).permit(:title, :game, :description, :date, :location)
+    def event_params
+        params.require(:event).permit(:title, :game, :description, :date, :location)
     end
 end

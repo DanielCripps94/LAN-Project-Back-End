@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/validate', to: 'users#validate'
   get '/userevents', to: 'users#user_events'
   get '/events', to: 'events#index'
+  get '/usershostedevents', to: 'users#user_hosted_events'
   delete '/userevents/:id', to: 'events#destroy'
   post '/tickets/new', to: 'tickets#create'
+  post '/events', to: 'events#create'
+  post '/comments/new', to: 'comments#create'
 end
