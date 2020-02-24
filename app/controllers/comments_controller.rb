@@ -5,7 +5,22 @@ class CommentsController < ApplicationController
         comment = Comment.new(event_id: comment_params[:event_id], content: comment_params[:content])
         comment[:user_id] = user.id
         comment.save
-        render json: comment
+        commentObj = {
+            content: comment.content,
+            user: comment.user.username
+        }
+        render json: commentObj
+    end
+
+    def get_event_comments
+        event = Event.find_by(id: params[:id])
+        eventComments = event.comments
+        comments = []
+        eventComments.each do |comment|  
+            commentHash = { content: comment[:content], user: comment.user.username}
+            comments.push(commentHash)
+        end
+        render json: { comments: comments }
     end
 
 

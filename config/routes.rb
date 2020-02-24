@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   post '/tickets/new', to: 'tickets#create'
   post '/events', to: 'events#create'
   post '/comments/new', to: 'comments#create'
+  get '/events/:id/comments', to: 'comments#get_event_comments'
 end
