@@ -18,12 +18,17 @@ class EventsController < ApplicationController
     end
 
 
-    def destroy
+    def destroy_ticket
         user = get_current_user
         ticket = user.tickets.find{|ticket| ticket.event_id == params[:id].to_i}
         ticket.destroy
     end
 
+    def destroy_event
+        user = get_current_user
+        event = Event.find_by(id: params[:id])
+        event.destroy
+    end
 
     private 
 

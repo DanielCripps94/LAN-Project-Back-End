@@ -39,7 +39,6 @@ class UsersController < ApplicationController
     def user_hosted_events
         user = get_current_user
         events = Event.select{|event| event.user == user}
-    
         if events
             render json: events
         else

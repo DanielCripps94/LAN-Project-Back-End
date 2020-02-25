@@ -13,7 +13,6 @@ class TicketsController < ApplicationController
         render json: ticket
     end
 
-    
 
     private
 
