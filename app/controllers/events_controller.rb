@@ -7,8 +7,10 @@ class EventsController < ApplicationController
 
     def create
         user = User.find_by(username: params[:event][:user])
+        
             event = Event.new(event_params)
             event[:user_id] = user.id
+            
             event.save
             if event 
             render json: event
@@ -28,6 +30,13 @@ class EventsController < ApplicationController
         user = get_current_user
         event = Event.find_by(id: params[:id])
         event.destroy
+    end
+
+    def event_users
+        event = Event.find_by(id: params[:id])
+        users = event.users
+        usernames = users.map{|user| user.username}
+        render json: usernames
     end
 
     private 

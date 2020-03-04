@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/events', to: 'events#index'
   get '/events/:id/comments', to: 'comments#get_event_comments'
   get '/usershostedevents', to: 'users#user_hosted_events'
+  get '/events/:id/users', to: 'events#event_users'
   delete '/userevents/:id', to: 'events#destroy_ticket'
   delete '/userticket/:id', to: 'events#destroy_event'
 
