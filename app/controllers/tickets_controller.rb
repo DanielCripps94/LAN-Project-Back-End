@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
         ticket = Ticket.new(event_id: ticket_params[:event_id])
         ticket[:user_id] = user.id
         ticket.save
-        render json: ticket
+        render json: {data: ticket, user: ticket.user}
     end
 
 
